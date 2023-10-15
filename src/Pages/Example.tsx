@@ -34,7 +34,6 @@ export default function Courses() {
         d-flex align-items-center justify-content-center flex-column
         vh-100
         ">
-          
           <form className="form" onSubmit={submitter}>
             <div className="col-12 mt-2 ">
               <label>val1 : </label>

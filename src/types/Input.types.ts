@@ -14,8 +14,12 @@ export interface InputState {
     isValid: boolean;
 }
 
+export enum InputActionKind {
+    CHANGE = "CHANGE"
+}
+
 export type InputAction = {
-    type: "CHANGE";
+    type: InputActionKind;
     value: string;
     validations: any;
 };

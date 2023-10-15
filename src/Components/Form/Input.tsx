@@ -1,11 +1,11 @@
-import React, { useEffect, useReducer, ChangeEvent } from "react";
+import React, { useEffect, useReducer, ChangeEvent, useState } from "react";
 import validator from "../../validators/validator";
-import { InputAction, InputProps, InputState } from "../../types/Input.types";
+import { InputAction, InputActionKind, InputProps, InputState } from "../../types/Input.types";
 import "./Input.css";
 
 const inputReducer = (state: InputState, action: InputAction): InputState => {
   switch (action.type) {
-    case "CHANGE": {
+    case InputActionKind.CHANGE: {
       return {
         ...state,
         value: action.value,
@@ -28,16 +28,19 @@ const Input: React.FC<InputProps> = (props) => {
   const { id, onInputHandler } = props;
 
   useEffect(() => {
-    onInputHandler(id, value, isValid);
+    const timeoutId = setTimeout(() =>onInputHandler(id, value, isValid), 1000);
+
+    return () => clearTimeout(timeoutId);
   }, [value]);
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     dispatch({
-      type: "CHANGE",
+      type: InputActionKind.CHANGE,
       value: event.target.value,
       validations: props.validations,
     });
   };
+
 
   const element =
     props.element === "input" ? (
@@ -48,7 +51,9 @@ const Input: React.FC<InputProps> = (props) => {
           mainInput.isValid ? "success" : "error"
         }`}
         value={mainInput.value}
-        onChange={onChangeHandler}
+        onChange={(event)=>{
+          onChangeHandler(event)
+        }}
       />
     ) : (
       <textarea

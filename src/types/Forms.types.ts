@@ -10,12 +10,12 @@ export interface FormState {
   isFormValid: boolean;
 }
 
-export enum FormActionType{
+export enum FormActionEnum{
   CHANGE = "INPUT_CHANGE"
 }
 
 export interface FormAction {
-  type: FormActionType;
+  type: FormActionEnum;
   value?: string;
   isValid?: boolean;
   inputID?: string;
