@@ -1,5 +1,4 @@
-import Example from "./Page/Example"
-import './App.css'
+import Example from "./Pages/Example"
 
 function App() {
 

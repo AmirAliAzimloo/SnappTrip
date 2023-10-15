@@ -28,16 +28,19 @@ export default function Courses() {
 
   return (
     <>
-      <div className="container-fluid" >
-        <div className="container">
-          <div >
-            <span>Title</span>
-          </div>
+      <div className="container-fluid bg-success " >
+        <div className="
+        container
+        d-flex align-items-center justify-content-center flex-column
+        vh-100
+        ">
+          
           <form className="form" onSubmit={submitter}>
-            <div className="col-6 mt-2 ">
-              <div className="name input">
+            <div className="col-12 mt-2 ">
+              <label>val1 : </label>
+              <div >
                 <Input
-                 className=""
+                 className="p-3 rounded "
                   id="val1"
                   element="input"
                   onInputHandler={onInputHandler}
@@ -45,13 +48,13 @@ export default function Courses() {
                   type="text"
                   placeholder=" completed please ... "
                 />
-                <span className="error-message text-danger"></span>
               </div>
             </div>
-            <div className="col-6 mt-2 ">
+            <div className="col-12 mt-2 ">
+            <label>val2 : </label>
               <div >
                 <Input
-                 className=""
+                 className="p-3 rounded "
                   id="val2"
                   element="input"
                   onInputHandler={onInputHandler}
@@ -59,10 +62,9 @@ export default function Courses() {
                   type="text"
                   placeholder=" completed please ... "
                 />
-                <span className="error-message text-danger"></span>
               </div>
             </div>
-            <button type="submit" className="mt-2" >
+            <button type="submit" className=" bg-danger rounded p-1 col-12 mt-2" >
                 submit
             </button>
           </form>

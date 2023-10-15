@@ -1,28 +1,7 @@
 import React, { useEffect, useReducer, ChangeEvent } from "react";
 import validator from "../../validators/validator";
-
+import { InputAction, InputProps, InputState } from "../../types/Input.types";
 import "./Input.css";
-
-interface InputProps {
-  id: string;
-  element: string;
-  type: string;
-  placeholder: string;
-  className: string;
-  validations: any;
-  onInputHandler: (id: string, value: string, isValid: boolean) => void;
-}
-
-interface InputState {
-  value: string;
-  isValid: boolean;
-}
-
-type InputAction = {
-  type: "CHANGE";
-  value: string;
-  validations: any;
-};
 
 const inputReducer = (state: InputState, action: InputAction): InputState => {
   switch (action.type) {
