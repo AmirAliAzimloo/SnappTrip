@@ -29,7 +29,7 @@ export function useForm2(initialValues: FormValues): FormHook {
     );
     if (!hasErrors) {
       // validation is ok and we can send data to server
-      console.log("ارسال داده‌ها", values);
+      console.log("Your Data Is =>", values);
     } else {
      // validation is failed
     }
@@ -46,6 +46,16 @@ export function useForm2(initialValues: FormValues): FormHook {
     }
   };
 
+  const resetForm = (e: FormEvent)=>{
+    e.preventDefault()
+    Object.entries(values).forEach(([key, value], index) => {
+      setValues(prev=>{
+        return{...prev , [key]:""}
+      })
+    });
+    console.log("resetForm successfully ")
+  }
+
   // finally =>
   return {
     values,
@@ -54,5 +64,6 @@ export function useForm2(initialValues: FormValues): FormHook {
     setValues,
     validationErrors,
     setValidationRules,
+    resetForm
   };
 }

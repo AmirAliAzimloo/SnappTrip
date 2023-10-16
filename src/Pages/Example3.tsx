@@ -24,6 +24,7 @@ function Example3() {
     handleSubmit,
     validationErrors,
     setValidationRules,
+    resetForm
   } = useForm2({
     username: "",
     email: "",
@@ -63,9 +64,10 @@ function Example3() {
     ">
   <form onSubmit={handleSubmit}>
       <div  className="col-12 mt-2 d-flex align-items-center justify-content-center flex-column ">
-        <label>نام کاربری</label>
+        <label>Username</label>
         <input
-        className="p-3 rounded "
+        className="p-2 rounded "
+        placeholder=" completed please ... "
           type="text"
           name="username"
           value={values.username}
@@ -74,9 +76,10 @@ function Example3() {
         <div>{validationErrors.username}</div>
       </div>
       <div  className="col-12 mt-2 d-flex align-items-center justify-content-center flex-column ">
-        <label>ایمیل</label>
+        <label>Email</label>
         <input
-        className="p-3 rounded "
+        className="p-2 rounded "
+        placeholder=" completed please ... "
           type="email"
           name="email"
           value={values.email}
@@ -84,7 +87,10 @@ function Example3() {
         />
         <div>{validationErrors.email}</div>
       </div>
-      <button type="submit" className=" bg-primary rounded p-1 col-12 mt-2">ثبت</button>
+      <button type="submit" className={` btn bg-primary rounded p-1 col-12 mt-2  ${(!!values.username.trim() && !!values.email.trim()) ? "" : "disabled"} `}>submit</button>
+      <button onClick={(e)=>resetForm(e)}  className=" btn  bg-danger rounded p-1 col-12 mt-2" >
+                reset
+        </button>
     </form>
 </div>
   </div>

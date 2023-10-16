@@ -37,9 +37,9 @@ export interface FormHook {
   values: FormValues;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: FormEvent) => void;
+  resetForm: (e: FormEvent) => void;
   setValues: React.Dispatch<React.SetStateAction<FormValues>>;
   validationErrors: Record<string, string | undefined>;
   setValidationRules: React.Dispatch<React.SetStateAction<ValidationRules>>;
 }
 
-  

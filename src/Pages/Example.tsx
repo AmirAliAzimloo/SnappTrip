@@ -49,7 +49,7 @@ export default function Courses() {
                 <Input
                 resetForm={resetForm}
                 formReseted={formReseted}
-                 className="p-3 rounded "
+                 className="p-2 rounded "
                   id="val1"
                   element="input"
                   onInputHandler={onInputHandler}
@@ -65,7 +65,7 @@ export default function Courses() {
                 <Input
                 resetForm={resetForm}
                 formReseted={formReseted}
-                 className="p-3 rounded "
+                 className="p-2 rounded "
                   id="val2"
                   element="input"
                   onInputHandler={onInputHandler}
@@ -75,7 +75,7 @@ export default function Courses() {
                 />
               </div>
             </div>
-            <button type="submit" className=" bg-primary rounded p-1 col-12 mt-2" >
+            <button type="submit" className=" btn bg-primary rounded p-1 col-12 mt-2" >
                 submit
             </button>
             <button onClick={()=>{
@@ -83,7 +83,7 @@ export default function Courses() {
               setTimeout(()=>{
                 setFormReseted(false)
               },1000)
-            }}  className=" bg-danger rounded p-1 col-12 mt-2" >
+            }}  className=" btn bg-danger rounded p-1 col-12 mt-2" >
                 reset
             </button>
           </form>
