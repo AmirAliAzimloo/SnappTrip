@@ -1,3 +1,9 @@
+
+
+// Hi 😉💚🌹,
+// In this example I use my custom hook with custom validator that I write and get help from my custom component Input.
+
+
 import React, { useState } from "react";
 import { useForm } from '../hooks/useForm'
 import Input from "../Components/Form/Input";
@@ -34,11 +40,11 @@ export default function Courses() {
         <div className="
         container
         d-flex align-items-center justify-content-center flex-column
-        vh-100
+        vh-100 
         ">
           <form className="form" onSubmit={submitter}>
-            <div className="col-12 mt-2 ">
-              <label>val1 : </label>
+            <div className="col-12 mt-2 d-flex align-items-center justify-content-center flex-column ">
+              <label>val1</label>
               <div >
                 <Input
                 resetForm={resetForm}
@@ -53,8 +59,8 @@ export default function Courses() {
                 />
               </div>
             </div>
-            <div className="col-12 mt-2 ">
-            <label>val2 : </label>
+            <div className="col-12 mt-2 d-flex align-items-center justify-content-center flex-column ">
+            <label>val2</label>
               <div >
                 <Input
                 resetForm={resetForm}
@@ -81,6 +87,7 @@ export default function Courses() {
                 reset
             </button>
           </form>
+
         </div>
       </div>
     </>
