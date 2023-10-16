@@ -1,7 +1,7 @@
 
 
 // Hi 😉💚🌹,
-// In this hook i use reducer and handel events and methods with reducer and I think is good but not Enough
+// In this hook I use reducer and handel events and methods with reducer and I think is good but not Enough
 // Cause this hook It depends on component Input so I write useForm2 but I let it stay To see you both.
 
 
