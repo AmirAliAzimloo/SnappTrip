@@ -11,7 +11,8 @@ export interface FormState {
 }
 
 export enum FormActionEnum{
-  CHANGE = "INPUT_CHANGE"
+  CHANGE = "INPUT_CHANGE",
+  RESET = "FORM_RESET"
 }
 
 export interface FormAction {

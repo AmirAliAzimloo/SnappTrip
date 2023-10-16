@@ -26,13 +26,20 @@ const formReducer = (state: FormState, action: FormAction): FormState => {
         isFormValid: isFormValid,
       };
     }
+    case FormActionEnum.RESET : {
+      return {
+        inputs: {
+        },
+        isFormValid: false,
+      };
+    }
     default: {
       return state;
     }
   }
 };
 
-export const useForm = (initInputs: FormState["inputs"],initFormIsValid: boolean): [FormState, (id: string, value: string, isValid: boolean) => void] => {
+export const useForm = (initInputs: FormState["inputs"],initFormIsValid: boolean): [FormState, (id: string, value: string, isValid: boolean) => void,()=>void] => {
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: initInputs,
     isFormValid: initFormIsValid,
@@ -49,5 +56,11 @@ export const useForm = (initInputs: FormState["inputs"],initFormIsValid: boolean
     };
   }, [initInputs]);
 
-  return [formState, onInputHandler];
+  const resetForm = ()=>{
+    dispatch({
+      type:FormActionEnum.RESET,
+    })
+  }
+
+  return [formState, onInputHandler , resetForm];
 };

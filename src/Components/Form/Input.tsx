@@ -12,6 +12,13 @@ const inputReducer = (state: InputState, action: InputAction): InputState => {
         isValid: validator(action.value, action.validations),
       };
     }
+    case InputActionKind.RESET:{
+      return {
+        ...state,
+        value: action.value,
+        isValid: false,
+      };
+    }
     default: {
       return state;
     }
@@ -19,13 +26,15 @@ const inputReducer = (state: InputState, action: InputAction): InputState => {
 };
 
 const Input: React.FC<InputProps> = (props) => {
+
+  const { id, onInputHandler , resetForm , formReseted  } = props;
+  
   const [mainInput, dispatch] = useReducer(inputReducer, {
     value: "",
     isValid: false,
   });
 
   const { value, isValid } = mainInput;
-  const { id, onInputHandler } = props;
 
   useEffect(() => {
     const timeoutId = setTimeout(() =>onInputHandler(id, value, isValid), 1000);
@@ -34,13 +43,26 @@ const Input: React.FC<InputProps> = (props) => {
   }, [value]);
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  
     dispatch({
       type: InputActionKind.CHANGE,
-      value: event.target.value,
+      value:event.target.value,
       validations: props.validations,
     });
   };
 
+  useEffect(()=>{
+    if(formReseted){
+    resetForm()
+    dispatch({
+      type: InputActionKind.RESET,
+      value:"",
+      validations: props.validations,
+    })
+
+      
+    }
+  },[formReseted])
 
   const element =
     props.element === "input" ? (
@@ -50,7 +72,7 @@ const Input: React.FC<InputProps> = (props) => {
         className={`${props.className} ${
           mainInput.isValid ? "success" : "error"
         }`}
-        value={mainInput.value}
+        value={ mainInput.value}
         onChange={(event)=>{
           onChangeHandler(event)
         }}

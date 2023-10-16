@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from '../hooks/useForm'
 import Input from "../Components/Form/Input";
 import {
@@ -8,7 +8,9 @@ import {
 
 export default function Courses() {
 
-  const [formState, onInputHandler] = useForm({
+  const [formReseted,setFormReseted] = useState<boolean>(false)
+
+  const [formState, onInputHandler , resetForm] = useForm({
     val1: {
       value: '',
       isValid: false
@@ -39,6 +41,8 @@ export default function Courses() {
               <label>val1 : </label>
               <div >
                 <Input
+                resetForm={resetForm}
+                formReseted={formReseted}
                  className="p-3 rounded "
                   id="val1"
                   element="input"
@@ -53,6 +57,8 @@ export default function Courses() {
             <label>val2 : </label>
               <div >
                 <Input
+                resetForm={resetForm}
+                formReseted={formReseted}
                  className="p-3 rounded "
                   id="val2"
                   element="input"
@@ -63,8 +69,16 @@ export default function Courses() {
                 />
               </div>
             </div>
-            <button type="submit" className=" bg-danger rounded p-1 col-12 mt-2" >
+            <button type="submit" className=" bg-primary rounded p-1 col-12 mt-2" >
                 submit
+            </button>
+            <button onClick={()=>{
+              setFormReseted(true)
+              setTimeout(()=>{
+                setFormReseted(false)
+              },1000)
+            }}  className=" bg-danger rounded p-1 col-12 mt-2" >
+                reset
             </button>
           </form>
         </div>
